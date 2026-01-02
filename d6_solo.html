@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D6 Solo</title>
+    <style>
+        html {
+            padding: 10px;
+            max-width: 500px;
+            font-size: 14px;
+        }
+        details {
+            padding: 10px;
+            border: 1px solid rgb(180, 180, 180);
+            background-color: beige;
+            border-radius: 10px;
+        }
+        summary {
+            cursor: pointer;
+        }
+        .indent {
+            text-indent: 2em;
+            margin: 0;
+        }
+        .orange {
+            color: orangered;
+        }
+        #img-d6 {
+            width:fit-content;
+            height: 20px;
+        }
+        .spin {
+            animation: spin 4s linear alternate infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+<body>
+    
+    <h1><img class="spin" id="img-d6" src="d6.png"> D6 Free Kriegspiel Solo Roleplaying</h1>
+    <details>
+        <summary>Setup</summary>
+        
+        <ul>
+            <b>List, track & maintain the following:</b>
+            <br><br>
+            <li>Themes (Campaign, Adventures, Scenes, etc.)</li>
+            <li>Characters / Factions (wants / needs / goals & progress moves)</li>
+            <li>Threads / Rumors</li>
+            <li>Maps (Campaign, Adventures, Scenes, etc.)</li>
+        </ul>
+    </details>
+    <details>
+        <summary>New Scene Format</summary>
+        
+        <ul>
+            <b>Roll 1d6:</b>
+            <br><br>
+            <li>1-3 Action</li>
+            <li>4-5 Quiet</li>
+            <li>6 Meanwhile...</li>
+        </ul>
+        <button id="btn-d6-new-scene-format">Random Scene Format</button>
+        <span id="display-d6-new-scene-format"></span>
+    </details>
+    <details>
+        <summary>Set the Scene</summary>
+        <ul>
+            <li>Create a title.</li>
+            <li>List themes / situational aspects / senses.</li>
+            <li>Create a map and/or create zones.</li>
+            <li>Note the time, date, visibility, weather / atmosphere, etc.</li>
+            <li>Set the challenge
+                <ul>
+                    <li>Enemies (Threats, Hitters, Bosses, Fillers, etc.)</li>
+                    <li>Obstacles (Hazards, Blocks, Distractions, etc.)</li>
+                    <li>Constrains (Countdowns, Limitations, Restrictions, etc.)</li>
+                </ul>
+            </li>
+        </ul>
+    </details>
+    <details>
+        <summary>Taking Action</summary>
+        <br>
+        <b>Action Declaration</b>
+        <ul>
+            <li>Declare your action and intention.</li>
+            <li>Declare your approach:
+                <ul>
+                    <li>careful</li>
+                    <li>clever</li>
+                    <li>flashy</li>
+                    <li>forceful</li>
+                    <li>quick</li>
+                    <li>sneaky</li>
+                    <li>other...</li>
+                </ul>
+            </li>
+            </ul>
+            <ul>
+                <li>Set Outcome A: Describe what a 'Hit' looks like.</li>
+                <li>Set Outcome B: Describe what a 'Miss' looks like.</li>
+                <li>Determine how long the action will take.</li>
+            </ul>
+
+            <b>Action Assessment</b>
+            <ul>
+                <li>Impossible (Try another way)</li>
+                <li>Demands a cost.</li>
+                <li>Needs extra steps.</li>
+                <li>Requires a particular item or resource.</li>
+                <li>Presents a risk. <b>(Only roll to avoid risk)</b></li>
+            </ul>
+                
+            <b>Advantage / Disadvantage</b>
+                <ul>
+                    <li>If advantaged (characteristic, skill, situation, etc.), prepare 2d6 and keep the highest result.</li>
+                    <li>Else if disadvantaged (hindered, injured, burdened, etc.), prepare 2d6 and keep the lowest result.</li>
+                    <li>Else, prepare 1d6.</li>
+                </ul>
+            <b>Assistance</b> 
+            <ul>
+                <li>If a character uses their turn to help, they roll. You take the highest overall result. Your ally shares any consequences.</li>
+            </ul>
+            <b>Roll Dice</b>
+            <br><br>
+            <div class="indent outcomes" id="outcome-6">6: A amplified!</div>
+            <div class="indent outcomes" id="outcome-5">5: A as expected.</div>
+            <div class="indent outcomes" id="outcome-4">4: A, but with a twist or counter event.</div>
+            <div class="indent outcomes" id="outcome-3">3: B, but with a twist or counter event.</div>
+            <div class="indent outcomes" id="outcome-2">2: B as expected.</div>
+            <div class="indent outcomes" id="outcome-1">1: B amplified!</div>
+            <br>
+            <button id="btn-d6-a">Option A is Likely</button>
+            <button id="btn-d6-x">Unsure</button>
+            <button id="btn-d6-b">Option B is Likely</button>
+            <br><br>
+            <b>Random Event</b>
+            <br>A random event occurs automatically on a roll of 1 on a 1d6.
+            <br>
+            <button id="btn-force-random-event">Invoke Random Event</button>
+            <br>
+            
+            <br>Random Event - Focus (1d6)
+            <div class="indent focus" id="focus-5">5-6: Actor: Character(s), Creature(s)</div>
+            <div class="indent focus" id="focus-3">3-4: Scenery: Environment, Atmosphere, Structure(s)</div>
+            <div class="indent focus" id="focus-1">1-2: Prop or Theme</div>
+            
+            <br>Rndom Event - Action (1d6)
+            <div class="indent action" id="action-4">4-6: ...creates an opportunity / provides an advantage</div>
+            <div class="indent action" id="action-1">1-3: ...creates a complication / imposes a disadvantage</div>
+            <br>
+            <b>The World Takes its Turn</b>
+            <ul><li>After your turn, consider how aspects of the world around your character change, develop, and move towards their own goals.</li>
+                <li>Note the passage of time.</li>
+            </ul>
+        </ul>
+    </details>
+    <details>
+        <summary>Optional Random Encounters</summary>
+        <ul>When time passes, roll for a random encounter.</ul>
+    </details>
+    <details>
+        <summary>Asking Questions, Perceiving Facts</summary>
+        <ol>
+            <li>Envision two options (eg: [A or B], [Yes or No], etc.)</li>
+            <br><li>Determine Modifiers</li>
+            <br>
+            <ul>
+                <li>Unsure: 1d6</li>
+                <li>Likely A / Yes: 2d6, keep highest</li>
+                <li>Likely B / No: 2d6, keep lowest</li>
+            </ul>
+            <br><li>Roll Dice</li>
+            <br>6. A amplified!, or Yes, and...!
+            <br>5. A as expected. / Yes, as expected.
+            <br>4. A, but with a twist or counter event. / Yes, but...
+            <br>3. B, but with a twist or counter event. / No, but...
+            <br>2. B as expected. / No, as expected.
+            <br>1. B amplified! / No, and...!
+        </ol>
+    </details>
+    <br><br>
+    <h1>Now, Play On!</h1>
+    <!-- <script src="script.js"></script> -->
+    <script>
+        const actionOutcomes = [
+            {roll: 6, element_id: "outcome-6"},
+            {roll: 5, element_id: "outcome-5"},
+            {roll: 4, element_id: "outcome-4"},
+            {roll: 3, element_id: "outcome-3"},
+            {roll: 2, element_id: "outcome-2"},
+            {roll: 1, element_id: "outcome-1"}
+        ];
+
+        const twistFocus = [
+            {roll: 5, element_id: "focus-5"},
+            {roll: 3, element_id: "focus-3"},
+            {roll: 1, element_id: "focus-1"}
+        ];
+
+        const twistAction = [
+            {roll: 4, element_id: "action-4"},
+            {roll: 1, element_id: "action-1"}
+        ];
+        
+        const imgD6 = document.getElementById('img-d6');
+        const btnD6NewSceneFormat = document.getElementById('btn-d6-new-scene-format');
+        const displayD6NewSceneFormat = document.getElementById('display-d6-new-scene-format');
+        const btnD6a = document.getElementById('btn-d6-a');
+        const btnD6x = document.getElementById('btn-d6-x');
+        const btnD6b = document.getElementById('btn-d6-b');
+        const btnForceRandomEvent = document.getElementById('btn-force-random-event');
+
+        // // LISTENERS
+        imgD6.addEventListener('click', () => {
+            let roll = roll1d6();
+            alert("You rolled a " + roll);
+        });
+
+        btnD6NewSceneFormat.addEventListener('click', () => {
+            let result = 0
+            const roll = Math.floor(Math.random() * 6) + 1;
+            if (roll >= 6) {
+                result = "Meanwhile...";
+            } else if (roll >= 4 ) {
+                result = "Quiet";
+            } else {
+                result = "Action";
+            }
+            displayD6NewSceneFormat.innerHTML = " " + result;
+        });
+
+        function twistYes() {
+            revertTwistFocusElementsToBlack();
+            revertTwistActionElementsToBlack();
+            
+            alert("Twist!");
+            let twist_focus_die = roll1d6();
+            const twistFocusEntry = findTwistFocusRow(twist_focus_die);
+            changeTargetElementToOrange(twistFocusEntry.element_id);
+
+            let twist_action_die = roll1d6();
+            const twistActionEntry = findTwistActionRow(twist_action_die);
+            changeTargetElementToOrange(twistActionEntry.element_id);
+        };
+
+        btnForceRandomEvent.addEventListener('click', () => {
+            twistYes();
+        });
+
+        
+        // // HELPERS 
+
+        // Change Outcome elements to black
+        function revertElementsToBlack() {
+            const elements = document.querySelectorAll('.outcomes');
+            elements.forEach(element => {
+                element.classList.remove('orange');
+            });
+        };
+
+        // Change Twist Focus Elements to black
+        function revertTwistFocusElementsToBlack() {
+            const elements = document.querySelectorAll('.focus');
+            elements.forEach(element => {
+                element.classList.remove('orange');
+            });
+        };
+
+        // Change Twist Action Elements to black
+        function revertTwistActionElementsToBlack() {
+            const elements = document.querySelectorAll('.action');
+            elements.forEach(element => {
+                element.classList.remove('orange');
+            });
+        };
+
+        // Change target element to orange
+        function changeTargetElementToOrange(elementId) {
+            const elementToColor = document.getElementById(elementId);
+            elementToColor.classList.add('orange');
+        };
+
+        function twistCheck() {
+            const twist_check = roll1d6();
+            if ( twist_check == 1 ) {
+                twistYes();
+            }
+        };
+
+        
+
+        // Find actionOutcome row by dice
+        function findActionOutcomeRow(diceRoll) {
+            return actionOutcomes.find(data => data.roll === diceRoll);
+        };
+
+        // Find twistFocus row by dice
+        function findTwistFocusRow(diceRoll) {
+            return twistFocus.find(data => data.roll <= diceRoll);
+        };
+
+        // Find twistAction row by dice
+        function findTwistActionRow(diceRoll) {
+            return twistAction.find(data => data.roll <= diceRoll);
+        };
+
+        function roll1d6() {
+            return Math.floor(Math.random() * 6) +1;
+        };
+        
+
+        // Option A is Likely
+        btnD6a.addEventListener('click', () => {
+            revertTwistFocusElementsToBlack();
+            revertTwistActionElementsToBlack();
+            const rolla1 = roll1d6();
+            const rolla2 = roll1d6();
+            const result = (rolla1 >= rolla2) ? rolla1 : rolla2;
+            const outcome = findActionOutcomeRow(result);
+
+            revertElementsToBlack();
+            changeTargetElementToOrange(outcome.element_id);
+            twistCheck();
+
+        });
+
+        // Option A and B have Equal Chance
+        btnD6x.addEventListener('click', () => {
+            revertTwistFocusElementsToBlack();
+            revertTwistActionElementsToBlack();
+            const result = roll1d6();
+            const outcome = findActionOutcomeRow(result);
+
+            revertElementsToBlack();
+            changeTargetElementToOrange(outcome.element_id);
+            twistCheck();
+        });
+
+        // Option B is Likely
+        btnD6b.addEventListener('click', () => {
+            revertTwistFocusElementsToBlack();
+            revertTwistActionElementsToBlack();
+            const rolla1 = roll1d6();
+            const rolla2 = roll1d6();
+            const result = (rolla1 >= rolla2) ? rolla2 : rolla1;
+            const outcome = findActionOutcomeRow(result);
+            
+            revertElementsToBlack();
+            changeTargetElementToOrange(outcome.element_id);
+            twistCheck();
+        });
+
+    </script>
+</body>
+</html>
