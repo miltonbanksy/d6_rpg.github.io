@@ -54,7 +54,7 @@ const actionOutcomes = [
             revertTwistFocusElementsToBlack();
             revertTwistActionElementsToBlack();
             
-            alert("Twist!");
+            alert("Random Event!");
             let twist_focus_die = roll1d6();
             const twistFocusEntry = findTwistFocusRow(twist_focus_die);
             changeTargetElementToOrange(twistFocusEntry.element_id);
