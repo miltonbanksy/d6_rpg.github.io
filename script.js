@@ -18,7 +18,19 @@ const actionOutcomes = [
             {roll: 1, element_id: "action-1"}
         ];
 
-        // To do...
+        const delveFocus = [
+            {roll: 5, elementId: ""},
+            {roll: 3, elementId: ""},
+            {roll: 1, elementId: ""}
+        ];
+
+        const delveAction = [
+            {roll: 4, elementId: ""},
+            {roll: 2, elementId: ""},
+            {roll: 1, elementId: ""}
+        ];
+
+        // To do... (maybe, just to tidy up...)
         const newSceneFormats = [
             {roll: 6, elementId: ""}
         ]
@@ -32,6 +44,7 @@ const actionOutcomes = [
         const btnForceRandomEvent = document.getElementById('btn-force-random-event');
         const detailTakingAction = document.getElementById('detail-taking-action');
         const titleRandomEvent = document.getElementById('title-random-event');
+        const btnDelvingJourneying = document.getElementById('btn-delving-journeying');
 
         // // LISTENERS
         imgD6.addEventListener('click', () => {
@@ -81,6 +94,10 @@ const actionOutcomes = [
 
         btnForceRandomEvent.addEventListener('click', () => {
             twistYes();
+        });
+
+        btnDelvingJourneying.addEventListener('click', () => {
+            
         });
 
         
