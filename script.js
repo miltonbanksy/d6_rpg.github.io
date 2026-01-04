@@ -54,18 +54,16 @@ const actionOutcomes = [
 
         function twistYes() {
 
-            // new...
-
-            
-            // change 'detail' color on random event
-            // This resets fine. black > orange > black √
+            // color pulse
             titleRandomEvent.classList.add('orange');
-            const colorTimer = setTimeout(revertColor, 1000);
+            setTimeout(() => {
+                titleRandomEvent.classList.remove('orange');
+            }, 1000);
 
-            // This bit doesn't reset. It should move right a bit, then back. Only works once.
+            // movement animation (restart every time)
+            titleRandomEvent.classList.remove('move-right-left');
+            void titleRandomEvent.offsetWidth;
             titleRandomEvent.classList.add('move-right-left');
-            const moveTimer = setTimeout(revertMove, 1000);
-
 
 
             revertTwistFocusElementsToBlack();
@@ -78,15 +76,6 @@ const actionOutcomes = [
             let twist_action_die = roll1d6();
             const twistActionEntry = findTwistActionRow(twist_action_die);
             changeTargetElementToOrange(twistActionEntry.element_id);
-        };
-
-        function revertColor() {
-            titleRandomEvent.classList.remove('orange');
-        };
-
-        function revertMove() {
-            titleRandomEvent.classList.remove('move-right-left');
-            void titleRandomEvent.offsetWidth;
         };
 
 

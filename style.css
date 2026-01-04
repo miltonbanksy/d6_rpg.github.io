@@ -43,7 +43,7 @@ summary {
 
 .move-right-left {
     position: relative;
-    animation: moveRL 2s ease-in-out /*infinite alternate*/;
+    animation: moveRL 1s ease-in-out /*infinite alternate*/;
 }
 
 @keyframes moveRL {
