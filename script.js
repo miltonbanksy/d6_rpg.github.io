@@ -186,6 +186,7 @@ btnDelvingJourneying.addEventListener('click', () => {
     let elements = document.querySelectorAll('.delve-focus, .delve-event');
     revertElementsToBlack(elements);
 
+    
     die = roll1d6();
     entry = findRow(delveFocus, die);
     changeTargetElementToOrange(entry.elementId);
@@ -193,5 +194,11 @@ btnDelvingJourneying.addEventListener('click', () => {
     die = roll1d6();
     entry = findRow(delveAction, die);
     changeTargetElementToOrange(entry.elementId);
+
+    function balls(array) {
+        die = roll1d6();
+        entry = findRow(array, die);
+        changeTargetElementToOrange(entry.elementId);
+    }
 });
 
