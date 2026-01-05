@@ -84,14 +84,6 @@ const actionOutcomes = [
             titleRandomEvent.classList.add('move-right-left');
 
 
-            // Instead of these...
-            //revertTwistFocusElementsToBlack();
-            //revertTwistActionElementsToBlack();
-
-            // I will try...
-            //elements = document.querySelectorAll('.outcomes, .focus, .action')
-            //revertElementsToBlack(elements);
-
             let twist_focus_die = roll1d6();
             const twistFocusEntry = findTwistFocusRow(twist_focus_die);
             changeTargetElementToOrange(twistFocusEntry.element_id);
@@ -106,6 +98,7 @@ const actionOutcomes = [
             twistYes();
         });
 
+        // TO DO...
         btnDelvingJourneying.addEventListener('click', () => {
 
         });
@@ -155,6 +148,7 @@ const actionOutcomes = [
         function roll1d6() {
             return Math.floor(Math.random() * 6) +1;
         };
+        
         
 
         // Option A is Likely
