@@ -49,7 +49,6 @@ const detailTakingAction = document.getElementById('detail-taking-action');
 const titleRandomEvent = document.getElementById('title-random-event');
 const btnDelvingJourneying = document.getElementById('btn-delving-journeying');
 
-        
 
 function twistYes() {
     
